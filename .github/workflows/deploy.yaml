@@ -27,7 +27,7 @@ jobs:
             SERVER_USER: ${{ vars.SERVER_USER }}
         run: |
           ssh $SERVER_USER@$SERVER_DOMAIN "
-            cd /path/to/your/laravel/repo &&
+            cd /var/www/php/szakdolgozat &&
             git fetch --all &&
             git reset --hard origin/main &&
             composer install --no-dev --optimize-autoloader &&
