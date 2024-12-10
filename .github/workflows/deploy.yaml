@@ -17,14 +17,14 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSHKEY }}" > ~/.ssh/id_rsa
+            echo "${{ secrets.SSHKEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ vars.DOMAINNAME }} >> ~/.ssh/known_hosts
 
       - name: Deploy to server
         env:
-          SERVER_DOMAIN: ${{ secrets.SERVER_DOMAIN }}
-          SERVER_USER: ${{ secrets.SERVER_USER }}
+            SERVER_DOMAIN: ${{ vars.DOMAINNAME }}
+            SERVER_USER: ${{ vars.SERVER_USER }}
         run: |
           ssh $SERVER_USER@$SERVER_DOMAIN "
             cd /path/to/your/laravel/repo &&
