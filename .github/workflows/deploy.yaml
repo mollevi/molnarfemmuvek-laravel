@@ -19,14 +19,14 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSHKEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.DOMAINNAME }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ vars.DOMAINNAME }} >> ~/.ssh/known_hosts
 
       - name: Deploy to server
         env:
-          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_DOMAIN: ${{ secrets.SERVER_DOMAIN }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
         run: |
-          ssh $SERVER_USER@$SERVER_IP "
+          ssh $SERVER_USER@$SERVER_DOMAIN "
             cd /path/to/your/laravel/repo &&
             git fetch --all &&
             git reset --hard origin/main &&
