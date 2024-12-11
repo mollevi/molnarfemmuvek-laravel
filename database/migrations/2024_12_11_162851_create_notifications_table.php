@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->string('address'); // 'cim' field, storing the address
-            $table->text('text'); // 'szoveg' field, storing the text content of the order
-            $table->timestamps(); // Automatically managed created_at and updated_at columns
-            $table->softDeletes();
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->id();
+            $table->string('reason');
             $table->unsignedBigInteger('user_id');
+            $table->text('description');
+            $table->dateTime('notification_time');
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('notifications');
     }
 };
