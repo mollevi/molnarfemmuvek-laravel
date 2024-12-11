@@ -31,6 +31,8 @@ jobs:
             git fetch --all &&
             git reset --hard origin/main &&
             composer install --no-dev --optimize-autoloader &&
+            nom install &&
+            npm run build &&
             php artisan migrate --force &&
             php artisan cache:clear &&
             php artisan config:clear &&
