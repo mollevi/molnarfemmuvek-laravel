@@ -18,7 +18,6 @@ Route::group([
         (array) config('backpack.base.middleware_key', 'admin')
     ),
     'namespace' => 'App\Http\Controllers\Admin',
-], function () { // custom admin routes
 ], function () {
     Route::get('logout', [AuthenticatedSessionController::class, "destroy"])->name('backpack.auth.logout');
     Route::crud('user', 'UserCrudController');
@@ -26,6 +25,9 @@ Route::group([
     Route::crud('order', 'OrderCrudController');
     Route::crud('news', 'NewsCrudController');
     Route::crud('message', 'MessageCrudController');
+    Route::post('poll/{id}/add-answer-option', [PollCrudController::class, 'addAnswerOption'])->name('poll.add-answer-option');
+    Route::get('poll/{poll}/answer-options', [PollController::class, 'getAnswerOptions'])->name('admin.poll.answer-options');
+
 }); // this should be the absolute last line of this file
 
 /**
