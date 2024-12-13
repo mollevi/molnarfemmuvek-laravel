@@ -15,7 +15,8 @@
         "livewire/livewire": "^3.5",
         "predis/predis": "^2.3",
         "spatie/laravel-ignition": "^2.9",
-        "spatie/laravel-medialibrary": "^11.11"
+        "spatie/laravel-medialibrary": "^11.11",
+        "symfony/mailer": "~7.1.0"
     },
     "require-dev": {
         "backpack/generators": "^4.0",
