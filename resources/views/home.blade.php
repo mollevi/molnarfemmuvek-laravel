@@ -120,9 +120,9 @@
                         </div>
                     </div>
                     <p class="mt-auto">
-              <span class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] transition focus:outline-none group-focus:border-[#ff0]">
-                {{__('Case study')}}
-              </span>
+                      <span class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] transition focus:outline-none group-focus:border-[#ff0]">
+                        {{__('Read more')}}
+                      </span>
                     </p>
                 </a>
                 <!-- End Card -->
@@ -175,7 +175,6 @@
                 <!-- ... until here -->
             </div>
             <!-- End Card Grid -->
-
         </div>
     </div>
     <!-- End Case Stories -->

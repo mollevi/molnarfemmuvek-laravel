@@ -13,7 +13,13 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::orderBy('created_at','desc')->simplePaginate(6);
+        return view('page.news-index', [
+            'news' => $news
+        ]);
+    }
+    public function readMore(News $news){
+        return view('page.news-read', ['item'=>$news]);
     }
 
     /**
