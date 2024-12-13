@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('answer_options', function (Blueprint $table) {
             $table->id();
             $table->string('response');
             $table->timestamps();
@@ -23,13 +23,13 @@ return new class extends Migration
 
         Schema::create('user_option', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('option_id');
+            $table->unsignedBigInteger('answer_option_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade');
+            $table->foreign('answer_option_id')->references('id')->on('answer_options')->onDelete('cascade');
 
-            $table->primary(['user_id', 'option_id']);
+            $table->primary(['user_id', 'answer_option_id']);
         });
     }
 

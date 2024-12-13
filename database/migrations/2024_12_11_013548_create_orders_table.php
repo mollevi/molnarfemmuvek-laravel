@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id(); // Primary key
-            $table->string('address'); // 'cim' field, storing the address
-            $table->text('text'); // 'szoveg' field, storing the text content of the order
+            $table->string('title'); // 'address' field, storing the address
+            $table->text('text'); // 'text' field, storing the text content of the order
             $table->timestamps(); // Automatically managed created_at and updated_at columns
             $table->softDeletes();
             $table->unsignedBigInteger('user_id');

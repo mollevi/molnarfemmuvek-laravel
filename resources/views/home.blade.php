@@ -1,4 +1,4 @@
-@extends("layouts.app")
+<x-app-layout>
 
 @section("title")
     Molnár Fémművek
@@ -608,3 +608,4 @@
         </div>
     </div>
 @endsection
+</x-app-layout>
