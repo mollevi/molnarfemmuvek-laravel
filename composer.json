@@ -8,12 +8,14 @@
     "require": {
         "php": "^8.2",
         "backpack/crud": "^6.7",
+        "backpack/medialibrary-uploaders": "^1.2",
         "backpack/theme-tabler": "^1.2",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "predis/predis": "^2.3",
-        "spatie/laravel-ignition": "^2.9"
+        "spatie/laravel-ignition": "^2.9",
+        "spatie/laravel-medialibrary": "^11.11"
     },
     "require-dev": {
         "backpack/generators": "^4.0",

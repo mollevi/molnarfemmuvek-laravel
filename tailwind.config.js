@@ -20,7 +20,9 @@ export default {
         },
     },
     plugins: [
+        require('@tailwindcss/forms'),
         forms,
         require('preline/plugin'),
     ],
+    darkMode: ['selector'],
 };
