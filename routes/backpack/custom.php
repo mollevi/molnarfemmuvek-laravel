@@ -1,13 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PollCrudController;
+use App\Http\Controllers\PollController;
 
 // --------------------------
 // Custom Backpack Routes
 // --------------------------
 // This route file is loaded automatically by Backpack\CRUD.
 // Routes you generate using Backpack\Generators will be placed here.
-
+// Override the Backpack logout route
 Route::group([
     'prefix' => config('backpack.base.route_prefix', 'admin'),
     'middleware' => array_merge(
@@ -16,6 +19,13 @@ Route::group([
     ),
     'namespace' => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
+], function () {
+    Route::get('logout', [AuthenticatedSessionController::class, "destroy"])->name('backpack.auth.logout');
+    Route::crud('user', 'UserCrudController');
+    Route::crud('poll', 'PollCrudController');
+    Route::crud('order', 'OrderCrudController');
+    Route::crud('news', 'NewsCrudController');
+    Route::crud('message', 'MessageCrudController');
 }); // this should be the absolute last line of this file
 
 /**
