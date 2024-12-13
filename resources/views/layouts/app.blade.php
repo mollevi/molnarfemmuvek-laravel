@@ -123,7 +123,6 @@
                                     </div>
                                 </div>
                                     @auth
-                                    @else
                                         <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{route("logout")}}">
                                             {{__("Sign Out")}}
                                         </a>
