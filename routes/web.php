@@ -5,7 +5,6 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\SetLocale;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/stories',[NewsController::class, 'index'])->name('stories');
