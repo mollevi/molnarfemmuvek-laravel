@@ -13,7 +13,8 @@ class PollController extends Controller
      */
     public function index()
     {
-        //
+        $polls = Poll::orderBy('created_at',"desc")->paginate(3);
+        return view('page.poll-index', compact('polls'));
     }
 
     /**
@@ -37,7 +38,7 @@ class PollController extends Controller
      */
     public function show(Poll $poll)
     {
-        //
+        return view('page.poll-vote', ['item'=>$poll]);
     }
 
     /**
@@ -48,6 +49,10 @@ class PollController extends Controller
         //
     }
 
+    public function getAnswerOptions($poll_id, $response)
+    {
+        $answerOptions =  Poll::with("answerOptions")->findOrFail($poll_id);
+    }
     /**
      * Update the specified resource in storage.
      */

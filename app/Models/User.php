@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+    use CrudTrait;
     use HasFactory, Notifiable, SoftDeletes;
 
 
@@ -47,13 +49,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Notification::class);
     }
 
-    public function options(): BelongsToMany
+    public function answerOptions(): BelongsToMany
     {
         return $this->belongsToMany(AnswerOption::class, 'user_option');
     }
 
-    public function sentMessages(): HasManyThrough
+    public function sentMessages(): HasMany
     {
-        return $this->hasManyThrough(Message::class,"message_senders");
+        return $this->hasMany(Message::class);
     }
 }
