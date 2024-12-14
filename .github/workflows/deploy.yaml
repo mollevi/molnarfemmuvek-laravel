@@ -38,7 +38,7 @@ jobs:
             php artisan config:clear &&
             php artisan route:cache
             ~/fixLaravelAccess
-            setfacl -R -m m:rwx .
+            sudo setfacl -R -m m:rwx .
             php artisan up
           "
 
