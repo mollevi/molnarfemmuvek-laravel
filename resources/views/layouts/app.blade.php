@@ -80,7 +80,7 @@
                     @endif
                     <!-- Dropdown -->
                     @if (Route::has('login'))
-                        <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:py-4">
+                        <div class="hs-dropdown flex-none [--strategy:static] md:[--strategy:fixed] md:py-4">
                             <button type="button" class="flex items-center w-full text-sm text-white hover:text-neutral-300 focus:outline-none focus:text-neutral-300">
                                 {{  __("You")  }}
                                 <svg class="flex-shrink-0 ms-1 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
