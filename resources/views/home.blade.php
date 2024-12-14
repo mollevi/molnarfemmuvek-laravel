@@ -238,7 +238,7 @@
         <div class="max-w-5xl px-4 xl:px-0 py-10 lg:py-20 mx-auto">
             <!-- Title -->
             <div class="max-w-3xl mb-10 lg:mb-14">
-                <h2 class="text-white font-semibold text-2xl md:text-4xl md:leading-tight">{{  __("Contact us")  }}</h2>
+                <h2 id="contact-us" class="text-white font-semibold text-2xl md:text-4xl md:leading-tight">{{  __("Contact us")  }}</h2>
                 <p class="mt-1 text-neutral-400">{{  __("Whatever your goal - we will get you there.")  }}</p>
             </div>
             <!-- End Title -->
@@ -246,7 +246,8 @@
             <!-- Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16">
                 <div class="md:order-2 border-b border-neutral-800 pb-10 mb-10 md:border-b-0 md:pb-0 md:mb-0">
-                    <form>
+                    <form method="POST" action="{{route("send.mail")}}">
+                        @csrf
                         <div class="space-y-4">
                             <!-- Input -->
                             <div class="relative">
@@ -256,7 +257,7 @@
                   [&:not(:placeholder-shown)]:pt-6
                   [&:not(:placeholder-shown)]:pb-2
                   autofill:pt-6
-                  autofill:pb-2" placeholder="{{  __("Name")  }}">
+                  autofill:pb-2" name="name" placeholder="{{  __("Name")  }}">
                                 <label for="hs-tac-input-name" class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
                     peer-focus:text-xs
                     peer-focus:-translate-y-1.5
@@ -275,7 +276,7 @@
                   [&:not(:placeholder-shown)]:pt-6
                   [&:not(:placeholder-shown)]:pb-2
                   autofill:pt-6
-                  autofill:pb-2" placeholder="{{  __("Email")  }}">
+                  autofill:pb-2" name="email" placeholder="{{  __("Email")  }}">
                                 <label for="hs-tac-input-email" class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
                     peer-focus:text-xs
                     peer-focus:-translate-y-1.5
@@ -294,7 +295,7 @@
                   [&:not(:placeholder-shown)]:pt-6
                   [&:not(:placeholder-shown)]:pb-2
                   autofill:pt-6
-                  autofill:pb-2" placeholder="{{  __("Company")  }}">
+                  autofill:pb-2" name="company" placeholder="{{  __("Company")  }}">
                                 <label for="hs-tac-input-company" class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
                     peer-focus:text-xs
                     peer-focus:-translate-y-1.5
@@ -313,7 +314,7 @@
                   [&:not(:placeholder-shown)]:pt-6
                   [&:not(:placeholder-shown)]:pb-2
                   autofill:pt-6
-                  autofill:pb-2" placeholder="Phone">
+                  autofill:pb-2" name="phone" placeholder="Phone">
                                 <label for="hs-tac-input-phone" class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
                     peer-focus:text-xs
                     peer-focus:-translate-y-1.5
@@ -332,7 +333,7 @@
                   [&:not(:placeholder-shown)]:pt-6
                   [&:not(:placeholder-shown)]:pb-2
                   autofill:pt-6
-                  autofill:pb-2" placeholder="{{  __("This is a textarea placeholder")  }}"></textarea>
+                  autofill:pb-2" name="message"  placeholder="{{  __("This is a textarea placeholder")  }}"></textarea>
                                 <label for="hs-tac-message" class="absolute top-0 start-0 p-4 h-full text-neutral-400 text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent peer-disabled:opacity-50 peer-disabled:pointer-events-none
                     peer-focus:text-xs
                     peer-focus:-translate-y-1.5
@@ -350,13 +351,13 @@
                             </p>
 
                             <p class="mt-5">
-                                <a class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none" href="#">
+                                <button class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none" type="submit">
                                     Submit
                                     <svg class="flex-shrink-0 size-4 transition group-hover:translate-x-0.5 group-hover:translate-x-0 group-focus:translate-x-0.5 group-focus:translate-x-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M5 12h14" />
                                         <path d="m12 5 7 7-7 7" />
                                     </svg>
-                                </a>
+                                </button>
                             </p>
                         </div>
                     </form>

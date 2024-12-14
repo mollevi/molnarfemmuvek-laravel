@@ -12,6 +12,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/stories',[NewsController::class, 'index'])->name('stories');
 Route::get('/stories/{news}',[NewsController::class, 'readMore'])->name('stories.read_more');
 Route::get('/about',[AboutController::class, 'index'])->name('about');
+Route::post('/contactus',[HomeController::class, 'sendMail'])->name('send.mail');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
