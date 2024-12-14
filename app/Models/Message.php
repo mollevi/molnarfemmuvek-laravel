@@ -15,7 +15,6 @@ class Message extends Model
 
     protected $fillable = [
         'content',
-        'timestamp',
         'order_id',
         'user_id',
     ];

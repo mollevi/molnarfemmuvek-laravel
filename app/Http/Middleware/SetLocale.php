@@ -14,18 +14,21 @@ class SetLocale
         Log::info("SetLocale");
         if ($request->has('lang')) {
             $lang = $request->lang;
-            Log::info("Now looking for a match for " . $lang);
             if (array_key_exists($lang, config('lang.locales'))) {
                 Log::info("Setting preferred language to " . $lang);
-                session()->put('language', $lang);
+                app()->setLocale($lang);
+                if(auth()->check()){
+                    auth()->getUser()->update(["language"=>$lang]);
+                    auth()->user()->save();
+                }
             }else{
                 Log::info("Can't set preferred language to " . $lang);
             }
         }
         Log::info('Session ID: ' . session()->getId());
 
-        if (session()->has('language')) {
-            $locale = session()->get('language');
+        if(auth()->check()){
+            $locale = auth()->user()->language;
             Log::info("Setting locale to " . $locale);
             app()->setLocale($locale);
         }else{

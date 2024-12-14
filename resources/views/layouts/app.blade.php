@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="hu">
 <head>
     <meta charset="utf-8">
     <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -103,7 +103,8 @@
                                     </a>
                                 @endauth
                                 @auth
-                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('order.list') }}" wire:navigate.hover>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300"
+                                   href="{{ route('order.list') }}">
                                     {{  __("Orders")  }}
                                 </a>
                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{route("logout")}}">
@@ -115,7 +116,7 @@
                     @endif
 
                     <div>
-                        <a class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none" href="../../templates/agency/index.html#contact">
+                        <a class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none" href="{{route("home")}}#contact-us">
                             {{  __("Contact us")  }}
                         </a>
                     </div>
@@ -281,6 +282,18 @@
                 });
             })();
         })()
+        document.addEventListener("DOMContentLoaded", function () {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetElement = document.querySelector(hash);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: "smooth"
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>

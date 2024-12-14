@@ -13,6 +13,9 @@ class AppLayout extends Component
      */
     public function render(): View
     {
+        if(Auth::check()){
+            app()->setLocale(Auth::user()->language);
+        }
         return view('layouts.app', [
             'isAdmin'=> Auth::user()?->is_admin,
         ]);
