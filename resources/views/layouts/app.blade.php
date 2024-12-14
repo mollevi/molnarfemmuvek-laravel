@@ -71,12 +71,12 @@
             <!-- Collapsible menu -->
             <div id="navbar-collapse" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
                 <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:ps-7">
-                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/" aria-current="page" wire:navigate>{{  __("Home")  }}</a>
-                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/stories" wire:navigate>{{  __("Stories")  }}</a>
-                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/about" wire:navigate>{{  __("About")  }}</a>
-                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/polls" wire:navigate>{{  __("Polls")  }}</a>
+                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="{{route("home")}}" aria-current="page" wire:navigate>{{  __("Home")  }}</a>
+                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="{{route("stories")}}" wire:navigate>{{  __("Stories")  }}</a>
+                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="{{route("about")}}" wire:navigate>{{  __("About")  }}</a>
+                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="{{route("polls")}}" wire:navigate>{{  __("Polls")  }}</a>
                     @if($isAdmin)
-                        <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/admin">{{  __("Admin Page")  }}</a>
+                        <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="{{route("backpack.dashboard")}}">{{  __("Admin Page")  }}</a>
                     @endif
                     <!-- Dropdown -->
                     @if (Route::has('login'))
@@ -103,11 +103,8 @@
                                     </a>
                                 @endauth
                                 @auth
-                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('register') }}" wire:navigate.hover>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('order.list') }}" wire:navigate.hover>
                                     {{  __("Orders")  }}
-                                </a>
-                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('register') }}" wire:navigate.hover>
-                                    {{  __("My Polls")  }}
                                 </a>
                                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{route("logout")}}">
                                     {{  __("Sign Out")  }}
