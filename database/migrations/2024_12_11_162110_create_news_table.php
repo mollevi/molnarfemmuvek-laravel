@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('large_image')->nullable();
             $table->string('title');
             $table->string('subtitle');
-            $table->string('teaser');
+            $table->text('teaser');
             $table->text('content');
             $table->timestamps();
             $table->softDeletes();

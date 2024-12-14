@@ -12,7 +12,7 @@ class HomeController
 {
     public function index()
     {
-        $news = News::orderBy('created_at','desc')->simplePaginate(6);
+        $news = News::orderByRaw('GREATEST(coalesce(updated_at, created_at), created_at) DESC')->limit(3)->get();
         return view('home', [
             'news' => $news,
         ]);

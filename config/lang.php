@@ -2,7 +2,7 @@
 
 return [
     'locales' => [
-        'hu',
-        'en'
+        'hu'=>'Hungarian',
+        'en'=>'English',
     ],
 ];

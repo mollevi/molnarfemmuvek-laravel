@@ -26,11 +26,25 @@
 </head>
 
 <body class="bg-neutral-900 dark flex flex-col flex-nowrap content-between items-stretch justify-between">
-
-    <header class="sticky top-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
+    <header class="sticky mt-4 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full">
         <nav class="relative max-w-[66rem] w-full bg-neutral-800 rounded-[28px] py-3 ps-5 pe-2 md:flex md:items-center md:justify-between md:py-0 mx-2 lg:mx-auto" aria-label="Global">
             <div class="flex items-center justify-between">
-                <a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80" href="{{route("home")}}" aria-label="Preline">
+                {{-- ICON COLLAPSE START--}}
+                <div class="hs-dropdown flex-none">
+                    <button type="button" class="flex items-start py-2">
+                        🌎
+                    </button>
+
+                    <div class="hs-dropdown-menu transition-[opacity,margin] duration-[8ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute top-full before:-top-5 before:start-0 before:w-full before:h-5">
+                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="?lang=en">
+                            {{  __("English")  }}
+                        </a><a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="?lang=hu">
+                            {{  __("Hungarian")  }}
+                        </a>
+                    </div>
+                </div>
+                {{-- ICON COLLAPSE END --}}
+                <a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80 mx-4" href="{{route("home")}}" aria-label="Preline">
                     <p class="text-white" wire:navigate.hover>
                         @yield("title", "Molnár Fémművek")
                     </p>
@@ -57,18 +71,18 @@
             <!-- Collapsible menu -->
             <div id="navbar-collapse" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
                 <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:ps-7">
-                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/" aria-current="page" wire:navigate.hover>{{__("Home")}}</a>
-                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/stories" wire:navigate.hover>{{__("Stories")}}</a>
-                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/about" wire:navigate.hover>{{__("About")}}</a>
-                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/polls" wire:navigate.hover>{{__("Polls")}}</a>
+                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/" aria-current="page" wire:navigate>{{  __("Home")  }}</a>
+                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/stories" wire:navigate>{{  __("Stories")  }}</a>
+                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/about" wire:navigate>{{  __("About")  }}</a>
+                    <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/polls" wire:navigate>{{  __("Polls")  }}</a>
                     @if($isAdmin)
-                        <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/admin" wire:navigate.hover>{{__("Admin Page")}}</a>
+                        <a class="text-sm text-white hover:text-neutral-300 md:py-4 focus:outline-none focus:text-neutral-300" href="/admin">{{  __("Admin Page")  }}</a>
                     @endif
                     <!-- Dropdown -->
                     @if (Route::has('login'))
                         <div class="hs-dropdown [--strategy:static] md:[--strategy:fixed] [--adaptive:none] md:py-4">
                             <button type="button" class="flex items-center w-full text-sm text-white hover:text-neutral-300 focus:outline-none focus:text-neutral-300">
-                                {{__("You")}}
+                                {{  __("You")  }}
                                 <svg class="flex-shrink-0 ms-1 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                      stroke-linejoin="round">
                                     <path d="m6 9 6 6 6-6" />
@@ -78,71 +92,45 @@
                             <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute top-full before:-top-5 before:start-0 before:w-full before:h-5">
                                 @auth
                                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('profile') }}" wire:navigate.hover>
-                                        {{__("Profile")}}
+                                        {{  __("Profile")  }}
                                     </a>
                                 @else
                                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('login') }}" wire:navigate.hover>
-                                        {{__("Log in")}}
+                                        {{  __("Log in")  }}
                                     </a>
                                     <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('register') }}" wire:navigate.hover>
-                                        {{__("Register")}}
+                                        {{  __("Register")  }}
                                     </a>
                                 @endauth
-                                <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
-                                    <button type="button" class="w-full flex justify-between items-center py-2 px-3 text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300">
-                                        {{__("Orders")}}
-                                        <svg class="sm:-rotate-90 flex-shrink-0 ms-2 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                             stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="m6 9 6 6 6-6" />
-                                        </svg>
-                                    </button>
-
-                                    <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute before:-end-5 before:top-0 before:h-full before:w-5 top-0 end-full !mx-[10px]">
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="#" wire:navigate.hover>
-                                            {{__("New")}}
-                                        </a>
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="#" wire:navigate.hover>
-                                            {{__("Old")}}
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="hs-dropdown relative [--strategy:static] md:[--strategy:absolute] [--adaptive:none] md:[--trigger:hover]">
-                                    <button type="button" class="w-full flex justify-between items-center py-2 px-3 text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300">
-                                        {{__("My Polls")}}
-                                        <svg class="sm:-rotate-90 flex-shrink-0 ms-2 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                             stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="m6 9 6 6 6-6" />
-                                        </svg>
-                                    </button>
-
-                                    <div class="hs-dropdown-menu transition-[opacity,margin] duration-[0.1ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 md:mt-2 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute before:-end-5 before:top-0 before:h-full before:w-5 top-0 end-full !mx-[10px]">
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="#">
-                                            {{__("History")}}
-                                        </a>
-                                    </div>
-                                </div>
-                                    @auth
-                                        <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{route("logout")}}">
-                                            {{__("Sign Out")}}
-                                        </a>
-                                    @endauth
+                                @auth
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('register') }}" wire:navigate.hover>
+                                    {{  __("Orders")  }}
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{ route('register') }}" wire:navigate.hover>
+                                    {{  __("My Polls")  }}
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="{{route("logout")}}">
+                                    {{  __("Sign Out")  }}
+                                </a>
+                                @endauth
                             </div>
                         </div>
                     @endif
 
                     <div>
                         <a class="group inline-flex items-center gap-x-2 py-2 px-3 bg-[#ff0] font-medium text-sm text-neutral-800 rounded-full focus:outline-none" href="../../templates/agency/index.html#contact">
-                            {{__("Contact us")}}
+                            {{  __("Contact us")  }}
                         </a>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
+
     <main id="content">
         @yield("main")
     </main>
+
     <footer class="relative overflow-hidden bg-neutral-900 w-full">
         <svg class="absolute -bottom-20 start-1/2 w-[1900px] transform -translate-x-1/2" width="2745" height="488" viewBox="0 0 2745 488" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.5 330.864C232.505 403.801 853.749 527.683 1482.69 439.719C2111.63 351.756 2585.54 434.588 2743.87 487" class="stroke-neutral-700/50" stroke="currentColor" />
@@ -166,12 +154,19 @@
         <div class="relative z-10">
             <div class="w-full max-w-5xl px-4 xl:px-0 py-10 lg:pt-16 mx-auto">
                 <div class="inline-flex items-center">
-                    <!-- Logo -->
-                    <svg class="w-24 h-auto" width="116" height="32" viewBox="0 0 116 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="13" cy="16.5214" r="8" class="fill-white" fill="currentColor" />
-                    </svg>
-                    <!-- End Logo -->
+                    <div class="hs-dropdown flex-none mx-4">
+                        <button type="button" class="flex items-start py-2">
+                            🌎
+                        </button>
 
+                        <div class="hs-dropdown-menu transition-[opacity,margin] duration-[8ms] md:duration-[150ms] hs-dropdown-open:opacity-100 opacity-0 md:w-48 hidden z-10 bg-neutral-800 md:shadow-md rounded-lg p-2 before:absolute top-full before:-top-5 before:start-0 before:w-full before:h-5">
+                            <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="?lang=en">
+                                {{  __("English")  }}
+                            </a><a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-white hover:text-neutral-300 font-medium focus:outline-none focus:text-neutral-300" href="?lang=hu">
+                                {{  __("Hungarian")  }}
+                            </a>
+                        </div>
+                    </div>
                     <div class=" ps-1 ms-1">
                         <p class="text-sm text-neutral-400">Molnár Fémművek kft.</p>
                     </div>
@@ -180,115 +175,115 @@
             <div class="w-full max-w-5xl px-4 xl:px-0 py-10 lg:pt-16 mx-auto">
                 <div class="inline-flex items-center">
                     <div class="ps-5 ms-5">
-                        <a class="text-sm text-neutral-400" href="#">Terms and conditions</a>
+                        <a class="text-sm text-neutral-400" href="#">{{__("Terms and conditions")}}</a>
                     </div>
                     <div class="ps-5 ms-5">
-                        <a class="text-sm text-neutral-400" href="#">Sütik az oldalon</a>
+                        <a class="text-sm text-neutral-400" href="#">{{__("Sütik az oldalon")}}</a>
                     </div>
                     <div class="ps-5 ms-5">
-                        <a class="text-sm text-neutral-400" href="#">Adatkezelési nyiltakozat</a>
+                        <a class="text-sm text-neutral-400" href="#">{{__("Adatkezelési nyiltakozat")}}</a>
                     </div>
                 </div>
             </div>
         </div>
 
     </footer>
-<!-- ========== END FOOTER ========== -->
+    <!-- ========== END FOOTER ========== -->
 
-<div class="fixed bottom-2 sm:bottom-4 end-2 sm:end-4 ms-2 z-[70] bg-neutral-900 border border-neutral-800 rounded-lg dark:bg-neutral-800">
-    <!-- Button Group -->
-    <div class="flex items-center gap-px">
-        <p class="inline-flex gap-x-2 text-xs text-white py-1 px-2 relative before:absolute before:top-1/2 before:-start-0.5 before:z-10 before:w-px before:h-4 before:bg-white/20 before:-translate-y-1/2 first:before:hidden">
-            <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4" />
-                <path d="M12 8h.01" />
-            </svg>
-        </p>
-
-        <!-- Templates Dropdown -->
-        <div class="hs-dropdown relative inline-flex [--strategy:absolute] [--placement:bottom-right] before:absolute before:top-1/2 before:-start-px before:z-10 before:w-px before:h-4 before:bg-white/20 before:-translate-y-1/2 first:before:hidden">
-            <button type="button" class="hs-dropdown-toggle py-2.5 sm:py-1.5 px-2 inline-flex justify-center items-center gap-x-2 text-xs rounded-e-lg border border-transparent bg-neutral-900 text-white hover:bg-neutral-950 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                Nézz meg minket más platformokon is
-                <svg class="hs-dropdown-open:rotate-180 flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m18 15-6-6-6 6" />
+    <div class="fixed bottom-2 sm:bottom-4 end-2 sm:end-4 ms-2 z-[70] bg-neutral-900 border border-neutral-800 rounded-lg dark:bg-neutral-800">
+        <!-- Button Group -->
+        <div class="flex items-center gap-px">
+            <p class="inline-flex gap-x-2 text-xs text-white py-1 px-2 relative before:absolute before:top-1/2 before:-start-0.5 before:z-10 before:w-px before:h-4 before:bg-white/20 before:-translate-y-1/2 first:before:hidden">
+                <svg class="flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4" />
+                    <path d="M12 8h.01" />
                 </svg>
-            </button>
+            </p>
 
-            <!-- Dropdown -->
-            <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-48 transition-[opacity,margin] duration opacity-0 hidden z-10 border border-neutral-800 bg-neutral-900 rounded-lg shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] dark:bg-neutral-800 dark:shadow-[0_10px_40px_10px_rgba(0,0,0,0.2)]">
-                <div class="p-1 space-y-0.5">
-                    <span class="block p-2 pb-1 text-[11px] uppercase text-gray-400 dark:text-neutral-400">Main Pages</span>
+            <!-- Templates Dropdown -->
+            <div class="hs-dropdown relative inline-flex [--strategy:absolute] [--placement:bottom-right] before:absolute before:top-1/2 before:-start-px before:z-10 before:w-px before:h-4 before:bg-white/20 before:-translate-y-1/2 first:before:hidden">
+                <button type="button" class="hs-dropdown-toggle py-2.5 sm:py-1.5 px-2 inline-flex justify-center items-center gap-x-2 text-xs rounded-e-lg border border-transparent bg-neutral-900 text-white hover:bg-neutral-950 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+                    Nézz meg minket más platformokon is
+                    <svg class="hs-dropdown-open:rotate-180 flex-shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m18 15-6-6-6 6" />
+                    </svg>
+                </button>
 
-                    <a class="group flex items-center gap-x-1.5 py-1.5 px-2 rounded-md text-[13px] text-gray-200 hover:bg-neutral-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 " href="../../index.html">
-                        Facebook
-                        <svg class="flex-shrink-0 size-3.5 ms-auto opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14" />
-                            <path d="m12 5 7 7-7 7" />
-                        </svg>
-                    </a>
+                <!-- Dropdown -->
+                <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 w-48 transition-[opacity,margin] duration opacity-0 hidden z-10 border border-neutral-800 bg-neutral-900 rounded-lg shadow-[0_10px_40px_10px_rgba(0,0,0,0.08)] dark:bg-neutral-800 dark:shadow-[0_10px_40px_10px_rgba(0,0,0,0.2)]">
+                    <div class="p-1 space-y-0.5">
+                        <span class="block p-2 pb-1 text-[11px] uppercase text-gray-400 dark:text-neutral-400">Main Pages</span>
 
-                    <a class="group flex items-center gap-x-1.5 py-1.5 px-2 rounded-md text-[13px] text-gray-200 hover:bg-neutral-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 " href="../../docs/index.html">
-                        Instagrem
-                        <svg class="flex-shrink-0 size-3.5 ms-auto opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14" />
-                            <path d="m12 5 7 7-7 7" />
-                        </svg>
-                    </a>
+                        <a class="group flex items-center gap-x-1.5 py-1.5 px-2 rounded-md text-[13px] text-gray-200 hover:bg-neutral-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 " href="../../index.html">
+                            Facebook
+                            <svg class="flex-shrink-0 size-3.5 ms-auto opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
 
-                    <a class="group flex items-center gap-x-1.5 py-1.5 px-2 rounded-md text-[13px] text-gray-200 hover:bg-neutral-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 " href="../../examples.html">
-                        Linkedin
-                        <svg class="flex-shrink-0 size-3.5 ms-auto opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14" />
-                            <path d="m12 5 7 7-7 7" />
-                        </svg>
-                    </a>
+                        <a class="group flex items-center gap-x-1.5 py-1.5 px-2 rounded-md text-[13px] text-gray-200 hover:bg-neutral-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 " href="../../docs/index.html">
+                            Instagrem
+                            <svg class="flex-shrink-0 size-3.5 ms-auto opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
+
+                        <a class="group flex items-center gap-x-1.5 py-1.5 px-2 rounded-md text-[13px] text-gray-200 hover:bg-neutral-800 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 " href="../../examples.html">
+                            Linkedin
+                            <svg class="flex-shrink-0 size-3.5 ms-auto opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
 
 
+                    </div>
                 </div>
+                <!-- End Dropdown -->
             </div>
-            <!-- End Dropdown -->
+            <!-- End Templates Dropdown -->
         </div>
-        <!-- End Templates Dropdown -->
+        <!-- End Button Group -->
     </div>
-    <!-- End Button Group -->
-</div>
 
-<!-- JS Implementing Plugins -->
+    <!-- JS Implementing Plugins -->
 
-<!-- JS PLUGINS -->
-<!-- Required plugins -->
-<script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.js"></script>
+    <!-- JS PLUGINS -->
+    <!-- Required plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.js"></script>
 
-<!-- JS INITIALIZATIONS -->
-<script>
-    (function () {
-        function textareaAutoHeight(el, offsetTop = 0) {
-            el.style.height = 'auto';
-            el.style.height = `${el.scrollHeight + offsetTop}px`;
-        }
-
+    <!-- JS INITIALIZATIONS -->
+    <script>
         (function () {
-            const textareas = [
-                '#hs-tac-message'
-            ];
+            function textareaAutoHeight(el, offsetTop = 0) {
+                el.style.height = 'auto';
+                el.style.height = `${el.scrollHeight + offsetTop}px`;
+            }
 
-            textareas.forEach((el) => {
-                const textarea = document.querySelector(el);
-                const overlay = textarea.closest('.hs-overlay');
+            (function () {
+                const textareas = [
+                    '#hs-tac-message'
+                ];
 
-                if (overlay) {
-                    const { element } = HSOverlay.getInstance(overlay, true);
+                textareas.forEach((el) => {
+                    const textarea = document.querySelector(el);
+                    const overlay = textarea.closest('.hs-overlay');
 
-                    element.on('open', () => textareaAutoHeight(textarea, 3));
-                } else textareaAutoHeight(textarea, 3);
+                    if (overlay) {
+                        const { element } = HSOverlay.getInstance(overlay, true);
 
-                textarea.addEventListener('input', () => {
-                    textareaAutoHeight(textarea, 3);
+                        element.on('open', () => textareaAutoHeight(textarea, 3));
+                    } else textareaAutoHeight(textarea, 3);
+
+                    textarea.addEventListener('input', () => {
+                        textareaAutoHeight(textarea, 3);
+                    });
                 });
-            });
-        })();
-    })()
-</script>
+            })();
+        })()
+    </script>
 </body>
 </html>
