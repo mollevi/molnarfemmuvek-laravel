@@ -27,4 +27,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/orders/{order}', [OrderController::class, 'view'])->name('order.view');
 });
 
+Route::get("/loaderio-2dcf75460537e365feca25890335c413", function(){
+    return "loaderio-2dcf75460537e365feca25890335c413";
+});
+
 require __DIR__.'/auth.php';
