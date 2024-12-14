@@ -27,6 +27,7 @@ jobs:
         run: |
           ssh $SERVER_USER@$SERVER_DOMAIN "
             cd /var/www/php/szakdolgozat &&
+            sudo setfacl -R -m m:rwx .
             php artisan down
             git fetch --all &&
             git reset --hard origin/main &&
