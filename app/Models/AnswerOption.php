@@ -12,7 +12,10 @@ class AnswerOption extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['response', 'poll_id'];
+    protected $fillable = [
+        'response',
+        'poll_id'
+    ];
 
     public function poll(): BelongsTo
     {

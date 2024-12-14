@@ -24,7 +24,7 @@
             </div>
                 <livewire:order-view :orderId="$order->id"/>
                 <div class="messages-section mt-4">
-                    <h3 class="text-lg font-medium mb-2">{{__("Messages")}}</h3>
+                    <h3 class="text-lg text-white font-medium mb-2">{{__("Messages")}}</h3>
                     <livewire:lazy-messages :orderId="$order->id" />
                 </div>
         </div>

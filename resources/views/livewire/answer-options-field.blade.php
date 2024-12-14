@@ -22,15 +22,4 @@
                 </div>
             </div>
     </div>
-    <div class="container m-4 p-0">
-        <div class="row p-0">
-            <div class="col">
-                <input type="text" class="form-control" id="addaotext" placeholder="Add a new answer option"
-                       wire:model.debounce="response" wire:keydown.enter.prevent="addAnswerOption">
-            </div>
-            <div class="col m-0">
-                <button wire:click="addAnswerOption" type="button" class="btn btn-primary">Add Option</button>
-            </div>
-        </div>
-    </div>
 </div>

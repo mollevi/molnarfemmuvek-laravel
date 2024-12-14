@@ -27,7 +27,7 @@
                             </div>
                             <p class="mt-auto">
                                 <span class="font-medium text-sm text-[#ff0] pb-1 border-b-2 border-neutral-700 group-hover:border-[#ff0] transition focus:outline-none group-focus:border-[#ff0]">
-                                    {{__('menu.read_more')}}
+                                    {{__("menu.read_more")}}
                                 </span>
                             </p>
                         </a>

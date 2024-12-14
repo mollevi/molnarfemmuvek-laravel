@@ -25,10 +25,9 @@ class OrderView extends Component
         ]);
     }
 
-    public function sendMessage(){
+    public function sendMessage(): void
+    {
         Message::create(["order_id" => $this->orderId, "user_id"=>Auth::user()->id, "content"=>$this->newMessage]);
         $this->newMessage = "";
-        $this->dispatch("messageSent");
-        $this->render();
     }
 }
