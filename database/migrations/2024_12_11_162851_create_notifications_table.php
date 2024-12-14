@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->string('reason');
             $table->unsignedBigInteger('user_id');
             $table->text('description');
-            $table->dateTime('notification_time');
             $table->timestamps();
             $table->softDeletes();
 

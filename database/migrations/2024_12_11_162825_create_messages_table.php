@@ -14,10 +14,9 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->text('content'); // 'tartalom' for the content of the message
-            $table->timestamp('timestamp'); // 'idopont' for the timestamp when the message was sent or created
-            $table->timestamps(); // Automatically managed created_at and updated_at columns
-            $table->softDeletes(); // Adds a `deleted_at` column for soft deletes
+            $table->text('content');
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('user_id');

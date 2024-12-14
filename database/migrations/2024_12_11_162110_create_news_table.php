@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('small_image')->nullable(); // 'small_image' for storing URL/path of the small image
-            $table->string('large_image')->nullable(); // 'large_image' for storing URL/path of the large image
-            $table->string('title'); // 'cim' for the title of the news item
-            $table->string('subtitle'); // 'subtitle' for the subtitle of the news item
-            $table->string('teaser'); // 'teaser' for the teaser of the news item
-            $table->text('content'); // 'content' for the content of the news item
+            $table->string('small_image')->nullable();
+            $table->string('large_image')->nullable();
+            $table->string('title');
+            $table->string('subtitle');
+            $table->string('teaser');
+            $table->text('content');
             $table->timestamps();
-            $table->softDeletes(); // Adds a `deleted_at` column for soft deletes
+            $table->softDeletes();
         });
     }
 

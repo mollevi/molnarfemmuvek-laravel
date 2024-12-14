@@ -28,6 +28,7 @@ jobs:
         run: |
           ssh $SERVER_USER@$SERVER_DOMAIN "
             cd /var/www/php/szakdolgozat &&
+            php artisan down
             git fetch --all &&
             git reset --hard origin/main &&
             composer install --no-dev --optimize-autoloader &&
@@ -38,5 +39,6 @@ jobs:
             php artisan config:clear &&
             php artisan route:cache
             ~/fixLaravelAccess
+            php artisan up
           "
 

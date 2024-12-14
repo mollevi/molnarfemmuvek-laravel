@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->string('title'); // 'address' field, storing the address
-            $table->text('text'); // 'text' field, storing the text content of the order
-            $table->timestamps(); // Automatically managed created_at and updated_at columns
+            $table->id();
+            $table->string('title');
+            $table->text('text');
+            $table->timestamps();
             $table->softDeletes();
             $table->unsignedBigInteger('user_id');
 
